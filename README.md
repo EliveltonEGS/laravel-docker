@@ -58,3 +58,11 @@ QUEUE_CONNECTION=redis
 ```
 
 - docker exec laravel_app composer require predis/predis
+
+## Limpar imagens
+```
+docker system prune --all --force --volumes
+```
+```
+docker system prune
+```
