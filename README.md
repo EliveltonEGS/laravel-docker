@@ -34,5 +34,27 @@ Mail::raw('Teste de email', fn($m) => $m->to('dest@test.com')->subject('Teste'))
 | Serviço | URL |
 |---------|-----|
 | Laravel | http://localhost:8080 |
-| MailHog | http://localhost:8025 |
-| MySQL   | localhost:3306 |
+| MailHog    | http://localhost:8025 |
+| MySQL      | localhost:3306        |
+| phpMyAdmin | http://localhost:8081 |
+
+## Acesso phpMyAdmin
+
+- http://localhost:8081
+
+- Usuário: root
+- Senha: root
+
+## Redis
+
+```
+REDIS_HOST=redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+CACHE_DRIVER=redis
+SESSION_DRIVER=redis
+QUEUE_CONNECTION=redis
+```
+
+- docker exec laravel_app composer require predis/predis
