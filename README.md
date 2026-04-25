@@ -1,7 +1,8 @@
-- composer create-project laravel/laravel src
+- composer create-project laravel/laravel nome-do-projeto "10.*"
 - docker-compose up -d --build
 - docker-compose exec app php artisan migrate
-
+- docker-compose down && docker-compose up -d --build
+- docker exec laravel_app php artisan migrate
 
 ```
 DB_CONNECTION=mysql
@@ -18,6 +19,15 @@ MAIL_USERNAME=null
 MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 ```
+## Testa envio de Email
+```
+docker exec -it laravel_app php artisan tinker
+```
+
+```
+Mail::raw('Teste de email', fn($m) => $m->to('dest@test.com')->subject('Teste'));
+```
+
 
 ## Portas disponíveis
 
