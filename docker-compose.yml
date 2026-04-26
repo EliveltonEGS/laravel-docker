@@ -4,6 +4,8 @@ services:
       context: ./docker/php
     container_name: laravel_app
     working_dir: /var/www
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - ./src:/var/www
     depends_on:
