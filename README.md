@@ -1,4 +1,4 @@
-- composer create-project laravel/laravel nome-do-projeto "10.*"
+- composer create-project laravel/laravel nome-do-projeto "12.*"
 - docker-compose up -d --build
 - docker-compose exec app php artisan migrate
 - docker-compose down && docker-compose up -d --build
