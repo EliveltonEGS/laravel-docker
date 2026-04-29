@@ -57,6 +57,14 @@ Mail::raw('Teste de email', fn($m) => $m->to('dest@test.com')->subject('Teste'))
 
 ## Redis
 
+
+## PGAdmin
+
+- Acesse http://localhost:8082 com:
+
+- Email: admin@admin.com
+- Senha: admin
+
 ```
 REDIS_HOST=redis
 REDIS_PASSWORD=null
