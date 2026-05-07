@@ -72,19 +72,6 @@ services:
     networks:
       - laravel
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: laravel_phpmyadmin
-    environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
-    ports:
-      - "8081:80"
-    depends_on:
-      - mysql
-    networks:
-      - laravel
-
   redis:
     image: redis:alpine
     container_name: laravel_redis
