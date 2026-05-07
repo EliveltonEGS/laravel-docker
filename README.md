@@ -1,12 +1,25 @@
 - composer create-project laravel/laravel nome-do-projeto "12.*"
-- docker-compose up -d --build or docker compose up -d
-- docker-compose exec app php artisan migrate
-- docker-compose down && docker-compose up -d --build
-- docker exec laravel_app php artisan migrate
+- docker compose up -d --build
+- docker compose down && docker compose up -d --build
 
-## Acessar container php
+## Adicionar novo projeto
+
+1. Crie a pasta `projects/meu-projeto/` com o código Laravel/PHP
+2. Adicione o serviço `app_meu_projeto` no `docker-compose.yml`
+3. Monte o volume no nginx e crie `docker/nginx/meu-projeto.conf` com a porta desejada
+4. Crie o banco: `./init-db.sh meu-projeto`
+5. Suba os containers: `docker compose up -d --build`
+
+## Acessar container de um projeto
 ```
-docker exec -it laravel_app bash
+docker exec -it laravel_app_projeto1 bash
+docker exec -it laravel_app_projeto2 bash
+```
+
+## Rodar migrate por projeto
+```
+docker exec laravel_app_projeto1 php artisan migrate
+docker exec laravel_app_projeto2 php artisan migrate
 ```
 
 ## Conexão Mysql
@@ -48,14 +61,26 @@ Mail::raw('Teste de email', fn($m) => $m->to('dest@test.com')->subject('Teste'))
 ```
 
 
+## Acessar os Projetos
+
+| Projeto | URL |
+|---------|-----|
+| projeto1 | http://localhost:8080 |
+| projeto2 | http://localhost:8090 |
+
+> Os projetos ficam em `projects/projeto1/` e `projects/projeto2/`.
+> Para adicionar um novo projeto, consulte a seção abaixo.
+
 ## Portas disponíveis
 
 | Serviço | URL |
 |---------|-----|
-| Laravel | http://localhost:8080 |
+| projeto1 | http://localhost:8080 |
+| projeto2 | http://localhost:8090 |
 | MailHog    | http://localhost:8025 |
 | MySQL      | localhost:3306        |
 | phpMyAdmin | http://localhost:8081 |
+| PGAdmin    | http://localhost:8082 |
 
 ## Acesso phpMyAdmin
 
