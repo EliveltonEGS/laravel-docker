@@ -4,6 +4,12 @@
 - docker-compose down && docker-compose up -d --build
 - docker exec laravel_app php artisan migrate
 
+## Acessar container php
+```
+docker exec -it laravel_app bash
+```
+
+## Conexão Mysql
 ```
 DB_CONNECTION=mysql
 DB_HOST=mysql
@@ -11,7 +17,10 @@ DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=laravel
 DB_PASSWORD=secret
+```
 
+## Config mailhog
+```
 MAIL_MAILER=smtp
 MAIL_HOST=mailhog
 MAIL_PORT=1025
@@ -65,6 +74,8 @@ Mail::raw('Teste de email', fn($m) => $m->to('dest@test.com')->subject('Teste'))
 - Email: admin@admin.com
 - Senha: admin
 
+
+## Confi redis
 ```
 REDIS_HOST=redis
 REDIS_PASSWORD=null
@@ -85,7 +96,7 @@ docker system prune --all --force --volumes
 docker system prune
 ```
 
-## Configuração do .env
+## Config do .env
 ```
 APP_NAME=Laravel
 APP_ENV=local
